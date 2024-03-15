@@ -5,16 +5,21 @@ Created on Fri Mar 15 11:38:43 2024
 @author: Fairuz Maulidya
 """
 
+class AngkaTercetak:
+    def __init__(self, nim):
+        self.dua_digit_terakhir_nim = int(nim[-2:])
+        self.angka_tercetak = 0
+
+    def cetak_angka(self):
+        for i in range(1, 51):
+            if i != self.dua_digit_terakhir_nim:
+                print(i, end=" ")
+                self.angka_tercetak += 1
+                if self.angka_tercetak % 26 == 0:
+                    print()  # Pindah ke baris baru
+
 nim = input("Masukkan dua digit terakhir NIM Anda: ")
-dua_digit_terakhir_nim = int(nim[-2:])
 
-angka_tercetak = 0
+angka_tercetak = AngkaTercetak(nim)
 
-for i in range(1, 51):
-    if i != dua_digit_terakhir_nim:
-        print(i, end=" ")
-        angka_tercetak += 1
-        # Cek apakah sudah mencapai 26 angka per baris
-        if angka_tercetak % 26 == 0:
-            print()  # Pindah ke baris baru
-
+angka_tercetak.cetak_angka()
